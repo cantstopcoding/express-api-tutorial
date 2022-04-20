@@ -16,6 +16,7 @@ app.get("/", (_, res) => {
 });
 
 app.post("/item", (req, res) => {
+  console.log(req.body);
   res.send("Connected to POST /item");
 });
 
