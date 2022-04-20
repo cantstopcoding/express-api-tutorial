@@ -12,6 +12,10 @@ app.get("/", (_, res) => {
   res.send("Hello World!");
 });
 
+app.post("/item", (req, res) => {
+  res.send("Connected to POST /item");
+});
+
 app.listen(3000, () => {
   console.log("Server started on port 3000");
 });
