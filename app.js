@@ -39,6 +39,16 @@ app.post("/item", (req, res) => {
   res.send("Connected to POST /item");
 });
 
+app.get("/items", (_, res) => {
+  Item.find()
+    .then((items) => {
+      res.json(items);
+    })
+    .catch((err) => {
+      if (err) throw err;
+    });
+});
+
 app.listen(3000, () => {
   console.log("Server started on port 3000");
 });
