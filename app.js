@@ -10,7 +10,7 @@ const mongoose = require("mongoose");
 require("./Item");
 const Item = mongoose.model("Item");
 
-mongoose.connect("http://localhost:3000", () => {
+mongoose.connect("mongodb://localhost/item", () => {
   console.log("connected to database");
 });
 
@@ -19,7 +19,23 @@ app.get("/", (_, res) => {
 });
 
 app.post("/item", (req, res) => {
-  console.log(req.body);
+  const newBook = {
+    name: req.body.name,
+    price: req.body.price,
+    description: req.body.description,
+  };
+
+  const item = new Item(newBook);
+
+  item
+    .save()
+    .then(() => {
+      console.log("Item Created!");
+    })
+    .catch((err) => {
+      if (err) throw err;
+    });
+
   res.send("Connected to POST /item");
 });
 
