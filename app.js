@@ -7,6 +7,9 @@ app.use(bodyParser.json());
 
 const mongoose = require("mongoose");
 
+require("./Item");
+const Item = mongoose.model("Item");
+
 mongoose.connect("http://localhost:3000", () => {
   console.log("connected to database");
 });
